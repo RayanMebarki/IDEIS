@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ngDraggable/0.1.11/ngDraggable.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
+	<title></title>
+</head>
+<body ng-app="myIdeis">
+	<div class="container" ng-controller="mainCtrl">
+<!-- 		<div>Motivation</div>
+		<div>Confiance</div>
+		<div>Evolution Professionnelle</div>	
+		<div ng-repeat="cell in list.motivation">
+			{{ cell }}
+		</div> -->
+
+		<div class="dropZone1" ng-drop="true" ng-drop-success="onDropComplete1($data, $event)">
+			<h2>Qu'est-ce qu'il t'intéresse</h2>
+			<div
+			class="dropZoneContainer"
+			ng-repeat="proposition in droppedObjects1"
+			ng-drag="true" ng-drag-data="proposition"
+			ng-drag-success="onDragSuccess1($data, $event)">
+			<div class="button">{{proposition.name}}</div>
+			</div>
+		</div>
+
+		<div class="dropZone2" ng-drop="true" ng-drop-success="onDropComplete2($data, $event)">
+			<h2>Place le ici</h2>
+			<div 
+			ng-repeat="proposition in droppedObjects2"
+			ng-drag="true" ng-drag-data="proposition"
+			ng-drag-success="onDragSuccess1($data2, $event)">
+				<div class="button">{{proposition.name}}</div>
+			</div>
+		</div>
+		<hr>
+		<div ng-if=ready class="nouvelleListe">
+			<div ng-repeat="item in newList">
+				<div class="button" ng-repeat="realItem in item">
+					{{realItem}}
+				</div>
+			</div>
+		</div>
+
+		<button ng-click="init()" class="init">REINITIALISER</button>
+		<button ng-click="displayCells()" class="init">GO</button>
+	</div>
+</body>
+</html>
