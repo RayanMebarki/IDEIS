@@ -8,7 +8,10 @@ app.controller("mainCtrl", function($scope, $http)
 	$scope.droppedObjects1 = [
 		{name: 'Motivation', id: 1},
 		{name: "Confiance", id: 2},
-		{name: "Évolution Professionnelle", id: 3}
+		{name: "Évolution Professionnelle", id: 3},
+		{name: "Ce n'est pas l'ecole", id: 4},
+		{name: "Immersion en entreprise", id: 5},
+		{name: "Contenu de la formation", id: 6},
 	];
 
 	$scope.init = function()
@@ -16,45 +19,71 @@ app.controller("mainCtrl", function($scope, $http)
 		$scope.droppedObjects1 = [
 			{name: 'Motivation', id: 1},
 			{name: "Confiance", id: 2},
-			{name: "Évolution Professionnelle", id: 3}
+			{name: "Évolution Professionnelle", id: 3},
+			{name: "Ce n'est pas l'ecole", id: 4},
+			{name: "Immersion en entreprise", id: 5},
+			{name: "Contenu de la formation", id: 6},
 		];
 		$scope.droppedObjects2 = [];
 	}
 
 	$scope.displayCells = function()
 	{
-		$scope.newList = [];
-	    $http.get("json.php")
-	    .then(function(response)
-	    {
-	        $scope.list = response.data;
-	        //console.log($scope.list.confiance);
-	    });
-		$scope.droppedObjects2.forEach(function(element)
+		if ($scope.droppedObjects2.length == 3)
 		{
-			switch(element.id)
+			$scope.newList = [];
+		    $http.get("json.php")
+		    .then(function(response)
+		    {
+		        $scope.list = response.data;
+		        //console.log($scope.list.confiance);
+		    });
+			$scope.droppedObjects2.forEach(function(element)
 			{
-				case 1:
-					$scope.newList.push($scope.list.motivation);
-					console.log($scope.newList);
-				break;
+				switch(element.id)
+				{
+					case 1:
+						$scope.newList.push($scope.list.motivation);
+						console.log($scope.newList);
+					break;
 
-				case 2:
-					$scope.newList.push($scope.list.confiance);
-					console.log($scope.newList);
-				break;
+					case 2:
+						$scope.newList.push($scope.list.confiance);
+						console.log($scope.newList);
+					break;
 
-				case 3:
-					$scope.newList.push($scope.list.evolutionPro);
-					console.log($scope.newList);
-				break;
-			}
-		});
-		$scope.tableauDeReponse = [];
-		$scope.tableauDeReponse = $scope.newMotivation;
-		$scope.tableauDeReponse = $scope.newConfiance;
-		$scope.tableauDeReponse = $scope.newEvolution;
-		$scope.ready = true;
+					case 3:
+						$scope.newList.push($scope.list.evolutionPro);
+						console.log($scope.newList);
+					break;
+
+					case 4:
+						$scope.newList.push($scope.list.pasEcole);
+						console.log($scope.newList);
+					break;
+
+					case 5:
+						$scope.newList.push($scope.list.immersionEntreprise);
+						console.log($scope.newList);
+					break;
+
+					case 6:
+						$scope.newList.push($scope.list.contenuFormation);
+						console.log($scope.newList);
+					break;
+				}
+			});
+			$scope.tableauDeReponse = [];
+			$scope.tableauDeReponse = $scope.newMotivation;
+			$scope.tableauDeReponse = $scope.newConfiance;
+			$scope.tableauDeReponse = $scope.newEvolution;
+			$scope.ready = true;
+		}
+		else
+		{
+			alert('Nombre d\'item incorrect')
+		}
+	
 	}
 
 	$scope.droppedObjects2 = [];
