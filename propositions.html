@@ -19,6 +19,7 @@
 		</div> -->
 
 		<div class="dropZone1" ng-drop="true" ng-drop-success="onDropComplete1($data, $event)">
+			<h1>Score : {{score}}</h1>
 			<h2>Qu'est-ce qu'il t'intéresse</h2>
 			<div
 			class="dropZoneContainer"
@@ -41,7 +42,7 @@
 		<hr>
 		<div ng-if=ready class="nouvelleListe">
 			<div ng-repeat="item in newList">
-				<div class="button" ng-repeat="realItem in item">
+				<div class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
 					{{realItem}}
 				</div>
 			</div>

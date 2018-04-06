@@ -1,9 +1,10 @@
 app.controller("mainCtrl", function($scope, $http)
 {
 	$scope.ready = false;
+	$scope.score  = 0;
 	$scope.reponseQuestion = [];
-	console.log('OK');
 	$scope.list = null;
+	$scope.nbClick = 0;
 
 	$scope.droppedObjects1 = [
 		{name: 'Motivation', id: 1},
@@ -27,6 +28,18 @@ app.controller("mainCtrl", function($scope, $http)
 		$scope.droppedObjects2 = [];
 	}
 
+	$scope.scoreIncrement = function()
+	{
+		this.nbClick ++;
+		if (this.nbClick % 2 == 0)
+		{
+			$scope.score -= 10;
+		} else
+		{
+			$scope.score += 10;
+		}
+	}
+
 	$scope.displayCells = function()
 	{
 		if ($scope.droppedObjects2.length == 3)
@@ -36,7 +49,6 @@ app.controller("mainCtrl", function($scope, $http)
 		    .then(function(response)
 		    {
 		        $scope.list = response.data;
-		        //console.log($scope.list.confiance);
 		    });
 			$scope.droppedObjects2.forEach(function(element)
 			{
@@ -44,32 +56,26 @@ app.controller("mainCtrl", function($scope, $http)
 				{
 					case 1:
 						$scope.newList.push($scope.list.motivation);
-						console.log($scope.newList);
 					break;
 
 					case 2:
 						$scope.newList.push($scope.list.confiance);
-						console.log($scope.newList);
 					break;
 
 					case 3:
 						$scope.newList.push($scope.list.evolutionPro);
-						console.log($scope.newList);
 					break;
 
 					case 4:
 						$scope.newList.push($scope.list.pasEcole);
-						console.log($scope.newList);
 					break;
 
 					case 5:
 						$scope.newList.push($scope.list.immersionEntreprise);
-						console.log($scope.newList);
 					break;
 
 					case 6:
 						$scope.newList.push($scope.list.contenuFormation);
-						console.log($scope.newList);
 					break;
 				}
 			});
@@ -110,7 +116,6 @@ app.controller("mainCtrl", function($scope, $http)
             if (index > -1)
             {
                 $scope.droppedObjects2.splice(index, 1);
-                console.log("ICI");
             }
         }
         
@@ -120,7 +125,6 @@ app.controller("mainCtrl", function($scope, $http)
             if (index == -1)
             {
                 $scope.droppedObjects2.push(data);
-                console.log($scope.droppedObjects2);
             }
         }
 
@@ -128,6 +132,5 @@ app.controller("mainCtrl", function($scope, $http)
     .then(function(response)
     {
         $scope.list = response.data;
-        console.log($scope.list);
     });
 });
