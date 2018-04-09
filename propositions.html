@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,7 +31,7 @@
 			</div>
 		</div>
 
-		<div class="dropZone2" ng-drop="true" ng-drop-success="onDropComplete2($data, $event)">
+		<div class="dropZone2" ng-drop="{{depose}}" ng-drop-success="onDropComplete2($data, $event)">
 			<h2>Place le ici</h2>
 			<div 
 			ng-repeat="proposition in droppedObjects2"
@@ -41,8 +42,8 @@
 		</div>
 		<hr>
 		<div ng-if=ready class="nouvelleListe">
-			<div ng-repeat="item in newList">
-				<div class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
+			<div ng-repeat="item in newList" id="$index">
+				<div id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
 					{{realItem}}
 				</div>
 			</div>

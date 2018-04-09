@@ -1,10 +1,13 @@
 app.controller("mainCtrl", function($scope, $http)
 {
 	$scope.ready = false;
+	$scope.j = 0; // compteur de sous-catégorie
 	$scope.score  = 0;
+	$scope.depose = true;
 	$scope.reponseQuestion = [];
 	$scope.list = null;
 	$scope.nbClick = 0;
+	$scope.saveProposition = [];
 
 	$scope.droppedObjects1 = [
 		{name: 'Motivation', id: 1},
@@ -33,13 +36,20 @@ app.controller("mainCtrl", function($scope, $http)
 		this.nbClick ++;
 		if (this.nbClick % 2 == 0)
 		{
+			var indexProposition = $scope.saveProposition.indexOf(this.realItem);
+			$scope.saveProposition.splice(indexProposition, 1);
+			console.log($scope.saveProposition);
 			$scope.score -= 10;
 		} else
 		{
+			var indexProposition = $scope.saveProposition.indexOf(this.realItem);
+			$scope.saveProposition.push(this.realItem);
+			console.log($scope.saveProposition);
 			$scope.score += 10;
 		}
 	}
 
+	$scope.index = 0;
 	$scope.displayCells = function()
 	{
 		if ($scope.droppedObjects2.length == 3)
@@ -78,6 +88,7 @@ app.controller("mainCtrl", function($scope, $http)
 						$scope.newList.push($scope.list.contenuFormation);
 					break;
 				}
+				$scope.index += 12;
 			});
 			$scope.tableauDeReponse = [];
 			$scope.tableauDeReponse = $scope.newMotivation;
@@ -94,7 +105,6 @@ app.controller("mainCtrl", function($scope, $http)
 
 	$scope.droppedObjects2 = [];
         
-        // Drop succes sur la Zone 1        
         $scope.onDropComplete1=function(data,evt){
             var index = $scope.droppedObjects1.indexOf(data);
             if (index == -1){
@@ -102,7 +112,6 @@ app.controller("mainCtrl", function($scope, $http)
             }
         }
         
-        // Drag succes depuis la Zone 1        
         $scope.onDragSuccess1=function(data,evt){
             var index = $scope.droppedObjects1.indexOf(data);
             if (index > -1) {
@@ -110,7 +119,6 @@ app.controller("mainCtrl", function($scope, $http)
             }
         }
 
-        // Drag succes depuis la Zone 2    
         $scope.onDragSuccess2=function(data,evt){
             var index = $scope.droppedObjects2.indexOf(data);
             if (index > -1)
@@ -119,12 +127,15 @@ app.controller("mainCtrl", function($scope, $http)
             }
         }
         
-        // Drop succes sur la Zone 2  
         $scope.onDropComplete2=function(data,evt){
             var index = $scope.droppedObjects2.indexOf(data);
             if (index == -1)
             {
                 $scope.droppedObjects2.push(data);
+            }
+            if ($scope.onDropComplete2.length == 3)
+            {
+            	$scope.depose = false;
             }
         }
 
