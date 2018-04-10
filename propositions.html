@@ -53,7 +53,7 @@
 		</div>
 
 		<div class="listOfProposition" ng-if=ready2 class="nouvelleListe">
-			<h1>Voici les thématiques que tu n'as pas retenus</h1>
+			<h1 class="titre">Voici les thématiques que tu n'as pas retenus</h1>
 			<div ng-repeat="item2 in newList2" id="$index">
 				<div id="{{$index + index}}" class="button" ng-repeat="realItem2 in item2" ng-click="scoreIncrement()">
 					{{realItem2}}

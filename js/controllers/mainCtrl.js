@@ -302,6 +302,7 @@ app.controller("mainCtrl", function($scope, $http)
 	    			$scope.tabMemory = [];
 					victory.play();
 					foule.play();
+					$scope.score = 100;
 					$scope.showReponse2 = true;
 
 	    		}
