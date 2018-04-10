@@ -19,7 +19,7 @@
 			{{ cell }}
 		</div> -->
 
-		<div class="dropZone1" ng-drop="true" ng-drop-success="onDropComplete1($data, $event)">
+		<div class="dropZone1" ng-drop="false" ng-drop-success="onDropComplete1($data, $event)">
 			<h1>Score : {{score}}</h1>
 			<h2>Qu'est-ce qu'il t'intéresse</h2>
 			<div
@@ -33,15 +33,18 @@
 
 		<div class="dropZone2" ng-drop="{{depose}}" ng-drop-success="onDropComplete2($data, $event)">
 			<h2>Place le ici</h2>
-			<div 
-			ng-repeat="proposition in droppedObjects2"
-			ng-drag="true" ng-drag-data="proposition"
-			ng-drag-success="onDragSuccess1($data2, $event)">
-				<div class="button">{{proposition.name}}</div>
+			<div class="content-dropZone">
+				<div 
+				ng-repeat="proposition in droppedObjects2"
+				ng-drag="true" ng-drag-data="proposition"
+				ng-drag-success="onDragSuccess1($data2, $event)">
+					<div class="button">{{proposition.name}}</div>
+				</div>				
 			</div>
+
 		</div>
 		<hr>
-		<div ng-if=ready class="nouvelleListe">
+		<div class="listOfProposition" ng-if=ready class="nouvelleListe">
 			<div ng-repeat="item in newList" id="$index">
 				<div id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
 					{{realItem}}
@@ -49,8 +52,20 @@
 			</div>
 		</div>
 
-		<button ng-click="init()" class="init">REINITIALISER</button>
-		<button ng-click="displayCells()" class="init">GO</button>
+		<div id="memory" ng-if=memory>
+			<div id="{{card}}" class="button" ng-repeat="card in tabMemory track by $index" ng-click="checkMemory($index)">
+				<span ng-if="showCard == true || hideCard == false">{{card}}</span>
+			</div>
+		</div>
+		<div id="victory" ng-if=showVictory>
+			<img src="media/img/shia.gif" alt="Victoire !"/>
+		</div>
+
+		<button ng-click="init()" ng-if=droppedObjects2NotNullIsOk class="init">REINITIALISER</button>
+		<button ng-click="displayCells()" ng-if="dropIsOk" class="init">GO</button>
+		<button ng-if=nbPropositionIsOk ng-click="insertProposition()" class="init">Valider mes propositions</button>
+		<button ng-if=recommencer ng-click="yesYouCan()" class="init">Recommencer</button>
+
 	</div>
 </body>
 </html>
