@@ -1,5 +1,8 @@
 app.controller("mainCtrl", function($scope, $http)
 {
+    var retry = new Audio('media/sounds/yesYouCan.mp3');
+    var victory = new Audio('media/sounds/VictoryLOL.mp3');
+    var foule = new Audio('media/sounds/foule.mp3');
 	$scope.ready = false;
 	$scope.j = 0; // compteur de sous-catégorie
 	$scope.score  = 0;
@@ -45,6 +48,7 @@ app.controller("mainCtrl", function($scope, $http)
 		$scope.droppedObjects2 = [];
 		$scope.saveProposition = [];
 		$scope.newList = [];
+		$scope.newList2 = [];
 		$scope.score = 0;
 		$scope.dropIsOk = false;
 		$scope.nbPropositionIsOk = false;
@@ -81,11 +85,43 @@ app.controller("mainCtrl", function($scope, $http)
 		if ($scope.droppedObjects2.length == 6)
 		{
 			$scope.newList = [];
+			$scope.newList2 = [];
 		    $http.get("json.php")
 		    .then(function(response)
 		    {
 		        $scope.list = response.data;
 		    });
+
+		    for (var i = 3; i < 6; i++)
+		    {
+				switch($scope.droppedObjects2[i].id)
+				{
+					case 1:
+						$scope.newList2.push($scope.list.motivation);
+					break;
+
+					case 2:
+						$scope.newList2.push($scope.list.confiance);
+					break;
+
+					case 3:
+						$scope.newList2.push($scope.list.evolutionPro);
+					break;
+
+					case 4:
+						$scope.newList2.push($scope.list.pasEcole);
+					break;
+
+					case 5:
+						$scope.newList2.push($scope.list.immersionEntreprise);
+					break;
+
+					case 6:
+						$scope.newList2.push($scope.list.contenuFormation);
+					break;
+				}		    	
+		    }
+
 		    for (var i = 0; i < 3; i++)
 		    {
 				switch($scope.droppedObjects2[i].id)
@@ -127,6 +163,12 @@ app.controller("mainCtrl", function($scope, $http)
 			alert('Tu n\'as pas classé toutes les catégories');
 		}
 	
+	}
+
+	$scope.prepare2 = function()
+	{
+		$scope.ready2 = true;
+		$scope.showVictory = false;
 	}
 
 	$scope.droppedObjects2 = [];
@@ -192,12 +234,15 @@ app.controller("mainCtrl", function($scope, $http)
         	if ($scope.score <= 40)
         	{
         		memoryGame();
+        	} else
+        	{
+        		$scope.showReponse2 = true;
         	}
         }
 
     $scope.showCard = false;
-    var retry = new Audio('media/sounds/yesYouCan.mp3');
-    var victory = new Audio('media/sounds/Victory.mp3');
+
+
     function memoryGame()
     {
     	console.log('toto');
@@ -256,6 +301,8 @@ app.controller("mainCtrl", function($scope, $http)
 	    			$scope.showVictory = true;
 	    			$scope.tabMemory = [];
 					victory.play();
+					foule.play();
+					$scope.showReponse2 = true;
 
 	    		}
 	    	} else

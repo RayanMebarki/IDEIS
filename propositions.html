@@ -52,6 +52,15 @@
 			</div>
 		</div>
 
+		<div class="listOfProposition" ng-if=ready2 class="nouvelleListe">
+			<h1>Voici les thématiques que tu n'as pas retenus</h1>
+			<div ng-repeat="item2 in newList2" id="$index">
+				<div id="{{$index + index}}" class="button" ng-repeat="realItem2 in item2" ng-click="scoreIncrement()">
+					{{realItem2}}
+				</div>
+			</div>
+		</div>
+
 		<div id="memory" ng-if=memory>
 			<div id="{{card}}" class="button" ng-repeat="card in tabMemory track by $index" ng-click="checkMemory($index)">
 				<span ng-if="showCard == true || hideCard == false">{{card}}</span>
@@ -65,6 +74,7 @@
 		<button ng-click="displayCells()" ng-if="dropIsOk" class="init">GO</button>
 		<button ng-if=nbPropositionIsOk ng-click="insertProposition()" class="init">Valider mes propositions</button>
 		<button ng-if=recommencer ng-click="yesYouCan()" class="init">Recommencer</button>
+		<button ng-if=showReponse2 ng-click="prepare2()" class="init">Afficher les autres réponses</button>
 
 	</div>
 </body>

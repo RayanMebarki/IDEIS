@@ -1,5 +1,6 @@
 <?php
 	$tab = array();
+	
 	$tab['motivation'][] = "Partir en vacances";
 	$tab['motivation'][] = "Ne pas rester sans rien faire";
 	$tab['motivation'][] = "Avoir plus de choix";
@@ -15,15 +16,16 @@
 	$tab['evolutionPro'][] = "Avoir une qualification / diplome plus eleve";
 	$tab['evolutionPro'][] = "Poste a responsabilite";
 
+	$tab['pasEcole'][] = "J'ai l'impression d'etre comme en entreprise";
+	$tab['pasEcole'][] = "Disponible a tout âge";
+	$tab['pasEcole'][] = "Ce n'est pas l'école";
+	$tab['pasEcole'][] = "On a des formateurs pas des profs";
+
 	$tab['immersionEntreprise'][] = "Travailler en france et a l'etranger";
 	$tab['immersionEntreprise'][] = "Etre embauché a la fin";
 	$tab['immersionEntreprise'][] = "Emploi durable";
 	$tab['immersionEntreprise'][] = "Si ma boite ne fonctionne plus je pourrais retrouver du travail";
 
-	$tab['pasEcole'][] = "J'ai l'impression d'etre comme en entreprise";
-	$tab['pasEcole'][] = "Disponible a tout âge";
-	$tab['pasEcole'][] = "Ce n'est pas l'école";
-	$tab['pasEcole'][] = "On a des formateurs pas des profs";
 
 	$tab['contenuFormation'][] = "Avoir une double competence";
 	$tab['contenuFormation'][] = "J'avais le d'expérience dans mon pays mais reconnu en france";
