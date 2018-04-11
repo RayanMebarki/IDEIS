@@ -23,6 +23,12 @@
 .listOfProposition
 {
 	display: flex;
+	flex-wrap: wrap;
+}
+
+#align
+{
+	width: 500px;
 }
 
 .selected
@@ -37,4 +43,10 @@
 .titre
 {
 	width: 41.4%;
+}
+
+.jdg
+{
+	width: 150px;
+	height: 200px;
 }

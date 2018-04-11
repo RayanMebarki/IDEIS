@@ -1,8 +1,21 @@
-app.controller("mainCtrl", function($scope, $http)
+/**
+
+.______          ___   ____    ____  ___      .__   __.    .___  ___.  _______ .______        ___      .______       __  ___  __  
+|   _  \        /   \  \   \  /   / /   \     |  \ |  |    |   \/   | |   ____||   _  \      /   \     |   _  \     |  |/  / |  | 
+|  |_)  |      /  ^  \  \   \/   / /  ^  \    |   \|  |    |  \  /  | |  |__   |  |_)  |    /  ^  \    |  |_)  |    |  '  /  |  | 
+|      /      /  /_\  \  \_    _/ /  /_\  \   |  . `  |    |  |\/|  | |   __|  |   _  <    /  /_\  \   |      /     |    <   |  | 
+|  |\  \----./  _____  \   |  |  /  _____  \  |  |\   |    |  |  |  | |  |____ |  |_)  |  /  _____  \  |  |\  \----.|  .  \  |  | 
+| _| `._____/__/     \__\  |__| /__/     \__\ |__| \__|    |__|  |__| |_______||______/  /__/     \__\ | _| `._____||__|\__\ |__| 
+                                                                                                                                  
+*/
+
+
+app.controller("mainCtrl", function($scope, $http, $sce)
 {
     var retry = new Audio('media/sounds/yesYouCan.mp3');
     var victory = new Audio('media/sounds/VictoryLOL.mp3');
     var foule = new Audio('media/sounds/foule.mp3');
+    var nbClickInfini = 0;
 	$scope.ready = false;
 	$scope.j = 0; // compteur de sous-catégorie
 	$scope.score  = 0;
@@ -12,19 +25,9 @@ app.controller("mainCtrl", function($scope, $http)
 	$scope.nbClick = 0;
 	$scope.saveProposition = [];
 	$scope.tabMemory = [];
+	$scope.challenge = 0;
+	
 
-	/**  Code from phpied.com/sleep-in-javascript */
-	function sleep(milliseconds)
-	{
-	  var start = new Date().getTime();
-	  for (var i = 0; i < 1e7; i++)
-	  {
-	    if ((new Date().getTime() - start) > milliseconds)
-	    {
-	      break;
-	    }
-	  }
-	}
 
 	$scope.droppedObjects1 = [
 		{name: 'Motivation', id: 1},
@@ -53,6 +56,8 @@ app.controller("mainCtrl", function($scope, $http)
 		$scope.dropIsOk = false;
 		$scope.nbPropositionIsOk = false;
 		$scope.droppedObjects2NotNullIsOk = false;
+
+		$scope.dropIsOk = true;
 	}
 
 	$scope.scoreIncrement = function()
@@ -75,6 +80,7 @@ app.controller("mainCtrl", function($scope, $http)
 			if ($scope.score >= 10)
 			{
 				$scope.nbPropositionIsOk = true;
+				$scope.dropIsOk = false;
 			}
 		}
 	}
@@ -82,6 +88,7 @@ app.controller("mainCtrl", function($scope, $http)
 	$scope.index = 0;
 	$scope.displayCells = function()
 	{
+		$scope.dropIsOk = false;
 		if ($scope.droppedObjects2.length == 6)
 		{
 			$scope.newList = [];
@@ -247,6 +254,7 @@ app.controller("mainCtrl", function($scope, $http)
     {
     	console.log('toto');
     	$scope.showCard = false;
+    	$scope.nbPropositionIsOk = false;
     	$scope.ready = false;
     	$scope.memory = true;
     	$scope.recommencer = false;
@@ -289,27 +297,28 @@ app.controller("mainCtrl", function($scope, $http)
 	    	this.showCard = true;
 	    	this.index = myIndex;
 	    	var index2 = $scope.tabMemory[this.index];
-	    	console.log("Premier clic : " + index1);
-	    	console.log("Second clic : " + index2);
+	    	// console.log("Premier clic : " + index1);
+	    	// console.log("Second clic : " + index2);
 	    	if (index1 == index2)
 	    	{
 	    		$scope.scoreMemory++;
 	    		nbClickMemory = 0;
-	    		console.log("Score :  " + $scope.scoreMemory);
+	    		// console.log("Score :  " + $scope.scoreMemory);
 	    		if ($scope.scoreMemory >= 3)
 	    		{
-	    			$scope.showVictory = true;
+	    			$scope.showVictory = false;
 	    			$scope.tabMemory = [];
-					victory.play();
-					foule.play();
+					// victory.play();
+					// foule.play();
 					$scope.score = 100;
-					$scope.showReponse2 = true;
-
+					$scope.challenge = 2;
+					checkChallenge();
+					$scope.memory = false;
 	    		}
 	    	} else
 	    	{
 	    		$scope.scoreMemory = 0;
-	    		console.log("Score :  " + $scope.scoreMemory);
+	    		// console.log("Score :  " + $scope.scoreMemory);
 	    		nbClickMemory = 0;
 	    		// this.showCard = false;
 	    		// saveFirstCard = false;
@@ -317,12 +326,67 @@ app.controller("mainCtrl", function($scope, $http)
 	    		// sleep(2000);
 	    		$scope.showCard = false;
 	    		$scope.recommencer = true;
-	    		console.log($scope.showCard);
+	    		// console.log($scope.showCard);
 	    	}
     	}
-
     }
 
+
+    function checkChallenge()
+    {
+        console.log($scope.challenge);
+	    switch($scope.challenge)
+	    {
+	    	case 2:
+
+	    	$scope.clicInfini = true;
+	    	$scope.cliqueDeLinfini();
+	    	break;
+
+	    	case 3:
+	    	questionnaire1();
+	    	break;
+
+	    	case 4:
+	    	idk();
+	    	break;
+	    }
+    }
+
+
+    $scope.cliqueDeLinfini = function()
+    {
+    	$scope.egg = true;
+    	nbClickInfini ++;
+    	if (nbClickInfini == 4 || nbClickInfini == 13)
+    	{
+    		retry.play();
+    	}
+    	if (nbClickInfini == 20)
+    	{
+    		$scope.egg = false;
+    		$scope.easterEgg = true;
+    	}
+    }
+    $scope.displayVideo = function(idVideo)
+    {
+    	switch(idVideo)
+    	{
+    		case 1:
+    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/ffRUntstOdw?autoplay=1");
+    		break;
+
+    		case 2:
+    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/l1zLNzVC_vw?autoplay=1");
+    		break;
+
+    		case 3:
+    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/Hrja93QLYR8?t=66&autoplay=1");
+    		break;
+    	}
+    	$scope.easterEgg = false;
+    	$scope.pygargue = true;
+    }
 
     $http.get("json.php")
     .then(function(response)

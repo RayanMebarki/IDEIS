@@ -45,11 +45,14 @@
 		</div>
 		<hr>
 		<div class="listOfProposition" ng-if=ready class="nouvelleListe">
-			<div ng-repeat="item in newList" id="$index">
-				<div id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
-					{{realItem}}
-				</div>
+			<div id="align">
+				<div ng-repeat="item in newList" id="$index">
+					<div id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
+						{{realItem}}
+					</div>
+				</div>				
 			</div>
+
 		</div>
 
 		<div class="listOfProposition" ng-if=ready2 class="nouvelleListe">
@@ -62,6 +65,7 @@
 		</div>
 
 		<div id="memory" ng-if=memory>
+			<h1>Jeu du mémory !</h1>
 			<div id="{{card}}" class="button" ng-repeat="card in tabMemory track by $index" ng-click="checkMemory($index)">
 				<span ng-if="showCard == true || hideCard == false">{{card}}</span>
 			</div>
@@ -70,6 +74,12 @@
 			<img src="media/img/shia.gif" alt="Victoire !"/>
 		</div>
 
+		<img src="media/img/oeuf.png" ng-if="egg" ng-click="cliqueDeLinfini()">
+		<img class="jdg" src="media/img/pygargue.jpg" ng-if="easterEgg" ng-click="displayVideo(2)">
+		<img class="jdg" src="media/img/aigle.jpg" ng-if="easterEgg" ng-click="displayVideo(1)">
+		<img class="jdg" src="media/img/nkm.jpg" ng-if="easterEgg" ng-click="displayVideo(3)">
+
+		<iframe ng-if="pygargue" width="560" height="315" src="{{codeVideo}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen autoplay="1"></iframe>
 		<button ng-click="init()" ng-if=droppedObjects2NotNullIsOk class="init">REINITIALISER</button>
 		<button ng-click="displayCells()" ng-if="dropIsOk" class="init">GO</button>
 		<button ng-if=nbPropositionIsOk ng-click="insertProposition()" class="init">Valider mes propositions</button>
