@@ -50,3 +50,9 @@
 	width: 150px;
 	height: 200px;
 }
+
+.gagneDesPoints
+{
+	display: inline-block;
+	margin: auto;
+}

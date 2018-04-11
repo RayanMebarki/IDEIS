@@ -222,6 +222,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
 
         $scope.insertProposition = function()
         {
+        	$scope.ready = false;
         	// FONCTIONNE
 
 /*        	$scope.saveProposition.forEach(function(element)
@@ -238,9 +239,10 @@ app.controller("mainCtrl", function($scope, $http, $sce)
         		});
         	});*/
 
-        	if ($scope.score <= 40)
+        	if ($scope.score < 120)
         	{
-        		memoryGame();
+        		$scope.gagneDesPoints = true;
+        		// memoryGame();
         	} else
         	{
         		$scope.showReponse2 = true;
@@ -250,9 +252,9 @@ app.controller("mainCtrl", function($scope, $http, $sce)
     $scope.showCard = false;
 
 
-    function memoryGame()
+    $scope.memoryGame = function()
     {
-    	console.log('toto');
+    	$scope.gagneDesPoints = false;
     	$scope.showCard = false;
     	$scope.nbPropositionIsOk = false;
     	$scope.ready = false;
@@ -273,7 +275,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
     {
 		
 		retry.play();
-		memoryGame();
+		$scope.memoryGame();
     }
 
     var nbClickMemory = 0;
@@ -381,7 +383,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
     		break;
 
     		case 3:
-    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/Hrja93QLYR8?t=66&autoplay=1");
+    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/Hrja93QLYR8?start=66&autoplay=1");
     		break;
     	}
     	$scope.easterEgg = false;
