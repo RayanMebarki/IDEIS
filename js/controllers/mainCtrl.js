@@ -351,6 +351,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
 
 	    	case 4:
 	    	idk();
+
 	    	break;
 	    }
     }
