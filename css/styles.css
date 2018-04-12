@@ -56,3 +56,9 @@
 	display: inline-block;
 	margin: auto;
 }
+
+
+img.corpsAvatar
+{
+	width: 100px;
+}

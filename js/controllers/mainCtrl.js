@@ -12,6 +12,13 @@
 
 app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 {
+	
+	console.log(varShared.getCorps());
+	console.log(varShared.getCheveux());
+	console.log(varShared.getBarbe());
+	console.log(varShared.getTshirt());
+
+
     var retry = new Audio('media/sounds/yesYouCan.mp3');
     var victory = new Audio('media/sounds/VictoryLOL.mp3');
     var foule = new Audio('media/sounds/foule.mp3');
