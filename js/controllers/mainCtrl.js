@@ -10,7 +10,7 @@
 */
 
 
-app.controller("mainCtrl", function($scope, $http, $sce)
+app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 {
     var retry = new Audio('media/sounds/yesYouCan.mp3');
     var victory = new Audio('media/sounds/VictoryLOL.mp3');
@@ -19,6 +19,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
 	$scope.ready = false;
 	$scope.j = 0; // compteur de sous-catégorie
 	$scope.score  = 0;
+	varShared.setScore($scope.score);
 	$scope.depose = true;
 	$scope.reponseQuestion = [];
 	$scope.list = null;
@@ -53,6 +54,8 @@ app.controller("mainCtrl", function($scope, $http, $sce)
 		$scope.newList = [];
 		$scope.newList2 = [];
 		$scope.score = 0;
+		varShared.setScore($scope.score);
+
 		$scope.dropIsOk = false;
 		$scope.nbPropositionIsOk = false;
 		$scope.droppedObjects2NotNullIsOk = false;
@@ -70,6 +73,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
 			$scope.saveProposition.splice(indexProposition, 1);
 			console.log($scope.saveProposition);
 			$scope.score -= 10;
+			varShared.setScore($scope.score);
 		} else
 		{
 			$(this).css("backgroundColor", "blue"); // NOT WORKING
@@ -77,6 +81,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
 			$scope.saveProposition.push(this.realItem);
 			console.log($scope.saveProposition);
 			$scope.score += 10;
+			varShared.setScore($scope.score);
 			if ($scope.score >= 10)
 			{
 				$scope.nbPropositionIsOk = true;
@@ -313,6 +318,7 @@ app.controller("mainCtrl", function($scope, $http, $sce)
 					// victory.play();
 					// foule.play();
 					$scope.score = 100;
+					varShared.setScore($scope.score);
 					$scope.challenge = 2;
 					checkChallenge();
 					$scope.memory = false;
