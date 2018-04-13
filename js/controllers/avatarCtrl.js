@@ -260,10 +260,6 @@ app.controller('avatarCtrl', function($scope, varShared)
 			console.log(partieDuCorps);
 		});
 
-		// console.log("media/avatar/export_avatar/" + $scope.corps[$scope.positionCorps].name);
-		// console.log("media/avatar/export_avatar/cheveux/" + $scope.cheveux[$scope.positionCheveux].name);
-		// console.log("media/avatar/export_avatar/Tshirt/" + $scope.tshirt[$scope.positionTshirt].name);
-		// console.log("media/avatar/export_avatar/barbes/" + $scope.barbe[$scope.positionBarbe].name);
 	}
 
 });

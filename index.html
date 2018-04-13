@@ -3,6 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyBMN3SDXDKTzcqLaW9N_WbPx1EK-05co3Y",
+	    authDomain: "ideis-f042c.firebaseapp.com",
+	    databaseURL: "https://ideis-f042c.firebaseio.com",
+	    projectId: "ideis-f042c",
+	    storageBucket: "",
+	    messagingSenderId: "100311996443"
+	  };
+	  firebase.initializeApp(config);
+	</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.js"></script>
@@ -17,6 +30,7 @@
 	<script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/accueilCtrl.js"></script>
 	<script type="text/javascript" src="js/controllers/avatarCtrl.js"></script>
+	<script type="text/javascript" src="js/controllers/disconnectCtrl.js"></script>
 
 	<title>IDEIS</title>
 </head>

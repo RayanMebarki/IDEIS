@@ -1,3 +1,29 @@
 <div class="container">
 	<h1>{{message}}</h1>
+
+
+	<fieldset>
+		<legend>Inscription</legend>
+		<form>
+			Email : <input type="email" name="email" ng-model="email">
+			<br>
+			Mot de passe : <input type="password" name="password" ng-model="password">
+			<br>
+			Retaper le mot de passe : <input type="password" name="password2" ng-model="password2">
+			<br>
+			<button ng-click="inscription()">S'inscrire</button>
+		</form>
+	</fieldset>
+
+	<fieldset>
+		<legend>Connexion</legend>
+		<form>
+			Email : <input type="email" name="email" ng-model="emailConnect">
+			<br>
+			Mot de passe : <input type="password" name="password" ng-model="passwordConnect">
+			<br>
+			<button ng-click="connexion()">Se connecter</button>
+		</form>
+	</fieldset>
+
 </div>

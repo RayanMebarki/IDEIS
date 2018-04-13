@@ -18,6 +18,11 @@ app.config(function($routeProvider)
 		templateUrl : 'templates/propositions.html',
 		controller : 'mainCtrl'
 	})
+	.when('/disconnect',
+	{
+		templateUrl : "templates/disconnect.html",
+		controller : 'disconnectCtrl'
+	})
 	.otherwise(
 	{
 		templateUrl : "templates/accueil.html",
