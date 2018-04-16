@@ -1,7 +1,7 @@
 <?php 
 $data = json_decode(file_get_contents("php://input"));
 
-$content = $data->content;
+$content = $data->partieDuCorps;
 $id = $data->idPersonne;
 
 
@@ -14,10 +14,17 @@ catch(PDOException $e)
     	echo "Connection failed: " . $e->getMessage();
     }
 
-    $query = $pdo->prepare('INSERT INTO `proposition`(`ID_PERSONNE`,`LIB_PROPOSITION`) VALUES (?, ?)');
+    $query = $pdo->prepare('INSERT INTO avatar(ID_PERSONNE, LIB_PARTIE) VALUES (?, ?)');
     $query->bindValue(1, $id);
     $query->bindValue(2, $content);
-    $query->execute();
+    try
+    {
+        $query->execute();    
+    } catch (PDOException $e)
+    {
+        echo $e;
+    }
+    
 
 
 

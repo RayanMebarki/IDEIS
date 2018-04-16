@@ -57,18 +57,15 @@ app.controller('accueilCtrl', function($scope, $http)
 		{
 			infoEmail = response.data.EMAIL;
 			infoPasswd = response.data.PASSWORD;
-			console.log(inputEmail + " vs " + response.data.EMAIL);
-			console.log(inputPassword + " vs " + response.data.PASSWORD);
 			if (inputEmail == infoEmail && inputPassword == infoPasswd)
 			{
-				alert('Connexion établie');
 				sessionStorage.setItem("id", response.data.ID_PERSONNE);
 				sessionStorage.setItem('nom', response.data.NOM_PERSONNE);
 				sessionStorage.setItem('prenom', response.data.PRENOM_PERSONNE);
-				window.location.href = "#!/questionnaire";
+				window.location.href = "#!/avatar";
 			} else
 			{
-				console.error('erreur login ou mot de passe');
+				console.error('Erreur login et/ou mot de passe');
 			}
 		}, function(response)
 		{

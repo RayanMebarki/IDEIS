@@ -1,4 +1,4 @@
-app.service("varShared", function()
+app.service("varShared", function($http)
 {
 	var score = 0;
 	var corps = "";
@@ -13,6 +13,17 @@ app.service("varShared", function()
 	this.setScore = function(newScore)
 	{
 		score = newScore;
+		$http.post('updateScore.php',
+		{
+			"score" : score,
+			'idPersonne' : sessionStorage.getItem('id')
+		}).then(function(response)
+		{
+			console.log(response.data);
+		}, function(error)
+		{
+			console.error(error);
+		});
 	}
 
 

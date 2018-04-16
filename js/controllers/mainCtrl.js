@@ -16,11 +16,6 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	{
 		$scope.prenom = sessionStorage.getItem("prenom");
 
-		console.log(varShared.getCorps());
-		console.log(varShared.getCheveux());
-		console.log(varShared.getBarbe());
-		console.log(varShared.getTshirt());
-
 
 	    var retry = new Audio('media/sounds/yesYouCan.mp3');
 	    var victory = new Audio('media/sounds/VictoryLOL.mp3');
@@ -238,13 +233,13 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	        $scope.insertProposition = function()
 	        {
 	        	$scope.ready = false;
-	        	// FONCTIONNE
 
-	/*        	$scope.saveProposition.forEach(function(element)
+	        	$scope.saveProposition.forEach(function(element)
 	        	{
 	        		$http.post('insert.php',
 	        		{
-	        			'content' : element
+	        			'content' : element,
+	        			'idPersonne' : sessionStorage.getItem('id')
 	        		})
 	        		.then(function(response)
 	        		{
@@ -252,7 +247,7 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	        		{
 	        			console.error("Erreur ! " + response);
 	        		});
-	        	});*/
+	        	});
 
 	        	if ($scope.score < 120)
 	        	{
@@ -327,7 +322,6 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 		    			$scope.tabMemory = [];
 						// victory.play();
 						// foule.play();
-						$scope.score = 100;
 						varShared.setScore($scope.score);
 						$scope.challenge = 2;
 						checkChallenge();

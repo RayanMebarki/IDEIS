@@ -12,7 +12,7 @@
 
 
 
-app.controller('avatarCtrl', function($scope, varShared)
+app.controller('avatarCtrl', function($scope, $http, varShared)
 {
 	if (sessionStorage.getItem('id') != null)
 	{
@@ -247,7 +247,7 @@ app.controller('avatarCtrl', function($scope, varShared)
 			varShared.setCorps("media/avatar/export_avatar/" + $scope.corps[$scope.positionCorps].name);
 			varShared.setCheveux("media/avatar/export_avatar/cheveux/" + $scope.cheveux[$scope.positionCheveux].name);
 			varShared.setTshirt("media/avatar/export_avatar/Tshirt/" + $scope.tshirt[$scope.positionTshirt].name);
-			varShared.setBarbe("media/avatar/export_avatar/barbes/" + $scope.barbe[$scope.positionBarbe].name);
+			varShared.setBarbe("media/avatar/export_avatar/barbes/" + $scope.barbe[$scope.positionbarbe].name);
 
 			$tabAvatar = [
 				varShared.getCorps(),
@@ -258,7 +258,15 @@ app.controller('avatarCtrl', function($scope, varShared)
 
 			$tabAvatar.forEach(function(partieDuCorps)
 			{
-				console.log(partieDuCorps);
+				$http.post("createAvatar.php",
+				{
+					"partieDuCorps" : partieDuCorps,
+					"idPersonne" : sessionStorage.getItem('id')
+				})
+				.then(function(response)
+				{
+					console.log('insert Done  : ' + partieDuCorps);
+				});
 			});
 
 		}
