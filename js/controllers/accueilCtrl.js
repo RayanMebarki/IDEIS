@@ -24,7 +24,9 @@ app.controller('accueilCtrl', function($scope, $http)
     		$http.post('register.php',
     		{
     			'email' : this.email,
-    			'password' : this.password
+    			'password' : this.password,
+    			'nom' : this.nom,
+    			'prenom' : this.prenom
     		})
     		.then(function(response)
     		{

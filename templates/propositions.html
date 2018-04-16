@@ -29,7 +29,7 @@
 	<div class="listOfProposition" ng-if=ready class="nouvelleListe">
 		<div id="align">
 			<div ng-repeat="item in newList" id="$index">
-				<div id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
+				<div ng-init='bgColor = "red"' style="background-color: {{bgColor}}" id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
 					{{realItem}}
 				</div>
 			</div>				

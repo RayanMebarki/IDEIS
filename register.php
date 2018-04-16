@@ -17,10 +17,14 @@ catch(PDOException $e)
     	echo "Connection failed: " . $e->getMessage();
     }
 
-    $query = $pdo->prepare('INSERT INTO `personne`(`EMAIL`,`PASSWORD`) VALUES (?, ?)');
-    $query->bindValue(1, $email);
-    $query->bindValue(2, $password);
+    $query = $pdo->prepare('INSERT INTO `personne`(`NOM_PERSONNE`, `PRENOM_PERSONNE`, `EMAIL`,`PASSWORD`, `SCORE`) VALUES (?, ?, ?, ?, ?)');
+    $query->bindValue(1, $data->nom);
+    $query->bindValue(2, $data->prenom);
+    $query->bindValue(3, $email);
+    $query->bindValue(4, $password);
+    $query->bindValue(5, 0);
     $query->execute();
 
 
 ?>
+

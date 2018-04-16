@@ -18,6 +18,11 @@ app.config(function($routeProvider)
 		templateUrl : 'templates/propositions.html',
 		controller : 'mainCtrl'
 	})
+	.when('/monProfil',
+	{
+		templateUrl : 'templates/monProfil.html',
+		controller : 'profilCtrl'
+	})
 	.when('/disconnect',
 	{
 		templateUrl : "templates/disconnect.html",

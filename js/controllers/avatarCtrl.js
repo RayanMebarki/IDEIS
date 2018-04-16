@@ -93,6 +93,171 @@ app.controller('avatarCtrl', function($scope, $http, varShared)
 			{name: "cheveux5brunF.png", id: 19},
 			{name: "cheveux5noirF.png", id: 20},
 			{name: "cheveux5rouxF.png", id: 21},
+
+			{name : "bonnet_noel_blond_H.png"},
+			{name : "bonnet_noel_brun_H.png"},
+			{name : "bonnet_noel_noir_H.png"},
+			{name : "bonnet_noel_roux_H.png"},
+
+			{name : "casquette_noir_blond_H.png"},
+			{name : "casquette_noir_brun_H.png"},
+			{name : "casquette_noir_noir_H.png"},
+			{name : "casquette_noir_roux_H.png"},
+
+			{name : "casquette_rouge_blond_H.png"},
+			{name : "casquette_rouge_brun_H.png"},
+			{name : "casquette_rouge_noir_H.png"},
+			{name : "casquette_rouge_roux_H.png"},
+
+			{name : "chapeau_blond_H.png"},
+			{name : "chapeau_brun_H.png"},
+			{name : "chapeau_noir_H.png"},
+			{name : "chapeau_roux_H.png"},
+
+			{name : "chapeau_pirate_blond_H.png"},
+			{name : "chapeau_pirate_brun_H.png"},
+			{name : "chapeau_pirate_noir_H.png"},
+			{name : "chapeau_pirate_roux_H.png"},
+
+			{name : "bonnet_cheveux1_blond_F.png"},
+			{name : "bonnet_cheveux1_brun_F.png"},
+			{name : "bonnet_cheveux1_noir_F.png"},
+			{name : "bonnet_cheveux1_roux_F.png"},
+
+			{name : "bonnet_meche_blond_F.png"},
+			{name : "bonnet_meche_brun_F.png"},
+			{name : "bonnet_meche_noir_F.png"},
+			{name : "bonnet_meche_roux_F.png"},
+
+			{name : "bonnet_noel_cheveux_blond_F.png"},
+			{name : "bonnet_noel_cheveux_brun_F.png"},
+			{name : "bonnet_noel_cheveux_noir_F.png"},
+			{name : "bonnet_noel_cheveux_roux_F.png"},
+
+			{name : "bonnet_noel_frise_blond_F.png"},
+			{name : "bonnet_noel_frise_brun_F.png"},
+			{name : "bonnet_noel_frise_noir_F.png"},
+			{name : "bonnet_noel_frise_roux_F.png"},
+
+			{name : "bonnet_noel_nattes_blond_F.png"},
+			{name : "bonnet_noel_nattes_brun_F.png"},
+			{name : "bonnet_noel_nattes_noir_F.png"},
+			{name : "bonnet_noel_nattes_roux_F.png"},
+
+
+			{name : "casquette_cheveux1_blond_F.png"},
+			{name : "casquette_cheveux1_brun_F.png"},
+			{name : "casquette_cheveux1_noir_F.png"},
+			{name : "casquette_cheveux1_roux_F.png"},
+
+			{name : "casquette_frise_blond_F.png"},
+			{name : "casquette_frise_brun_F.png"},
+			{name : "casquette_frise_noir_F.png"},
+			{name : "casquette_frise_roux_F.png"},
+
+			{name : "casquette_meche_blond_F.png"},
+			{name : "casquette_meche_brun_F.png"},
+			{name : "casquette_meche_noir_F.png"},
+			{name : "casquette_meche_roux_F.png"},
+
+			{name : "casquette_nattes_blond_F.png"},
+			{name : "casquette_nattes_brun_F.png"},
+			{name : "casquette_nattes_noir_F.png"},
+			{name : "casquette_nattes_roux_F.png"},
+
+			{name : "casquette_cheveux_long_blond_F.png"},
+			{name : "casquette_cheveux_long_brun_F.png"},
+			{name : "casquette_cheveux_long_noir_F.png"},
+			{name : "casquette_cheveux_long_roux_F.png"},
+
+			{name : "casquette_cheveux_long_blond_F.png"},
+			{name : "casquette_cheveux_long_brun_F.png"},
+			{name : "casquette_cheveux_long_noir_F.png"},
+			{name : "casquette_cheveux_long_roux_F.png"},
+
+			{name : "casquette_noir_cheveux_long_blond_F.png"},
+			{name : "casquette_noir_cheveux_long_brun_F.png"},
+			{name : "casquette_noir_cheveux_long_noir_F.png"},
+			{name : "casquette_noir_cheveux_long_roux_F.png"},
+
+			{name : "casquette_cheveux1_blond_F.png"},
+			{name : "casquette_cheveux1_brun_F.png"},
+			{name : "casquette_cheveux1_noir_F.png"},
+			{name : "casquette_cheveux1_roux_F.png"},
+
+			{name : "bonnet_cheveux1_blond_F.png"},
+			{name : "bonnet_cheveux1_brun_F.png"},
+			{name : "bonnet_cheveux1_noir_F.png"},
+			{name : "bonnet_cheveux1_roux_F.png"},
+
+			{name : "casquette_noir_frise_blond_F.png"},
+			{name : "casquette_noir_frise_brun_F.png"},
+			{name : "casquette_noir_frise_noir_F.png"},
+			{name : "casquette_noir_frise_roux_F.png"},
+
+			{name : "casquette_noir_meche_blond_F.png"},
+			{name : "casquette_noir_meche_brun_F.png"},
+			{name : "casquette_noir_meche_noir_F.png"},
+			{name : "casquette_noir_meche_roux_F.png"},
+
+			{name : "casquette_noir_nattes_brun_F.png"},
+			{name : "casquette_noir_nattes_noir_F.png"},
+			{name : "casquette_noir_nattes_roux_F.png"},
+
+
+			{name : "chapeau_meche_blond_F.png"},
+			{name : "chapeau_meche_brun_F.png"},
+			{name : "chapeau_meche_noir_F.png"},
+			{name : "chapeau_meche_roux_F.png"},
+
+			{name : "chapeau_cheveux_long_blond_F.png"},
+			{name : "chapeau_cheveux_long_brun_F.png"},
+			{name : "chapeau_cheveux_long_noir_F.png"},
+			{name : "chapeau_cheveux_long_roux_F.png"},
+
+			{name : "chapeau_frise_blond_F.png"},
+			{name : "chapeau_frise_brun_F.png"},
+			{name : "chapeau_frise_noir_F.png"},
+			{name : "chapeau_frise_roux_F.png"},
+
+			{name : "chapeau_meche_blond_F.png"},
+			{name : "chapeau_meche_brun_F.png"},
+			{name : "chapeau_meche_noir_F.png"},
+			{name : "chapeau_meche_roux_F.png"},
+
+			{name : "chapeau_nattes_blond_F.png"},
+			{name : "chapeau_nattes_brun_F.png"},
+			{name : "chapeau_nattes_noir_F.png"},
+			{name : "chapeau_nattes_roux_F.png"},
+
+
+			{name : "chapeau_pirate_meche_blond_F.png"},
+			{name : "chapeau_pirate_meche_brun_F.png"},
+			{name : "chapeau_pirate_meche_noir_F.png"},
+			{name : "chapeau_pirate_meche_roux_F.png"},
+
+			{name : "chapeau_pirate_cheveux_long_blond_F.png"},
+			{name : "chapeau_pirate_cheveux_long_brun_F.png"},
+			{name : "chapeau_pirate_cheveux_long_noir_F.png"},
+			{name : "chapeau_pirate_cheveux_long_roux_F.png"},
+
+			{name : "chapeau_pirate_frise_blond_F.png"},
+			{name : "chapeau_pirate_frise_brun_F.png"},
+			{name : "chapeau_pirate_frise_noir_F.png"},
+			{name : "chapeau_pirate_frise_roux_F.png"},
+
+			{name : "chapeau_pirate_meche_blond_F.png"},
+			{name : "chapeau_pirate_meche_brun_F.png"},
+			{name : "chapeau_pirate_meche_noir_F.png"},
+			{name : "chapeau_pirate_meche_roux_F.png"},
+
+			{name : "chapeau_pirate_blond_F.png"},
+			{name : "chapeau_pirate_brun_F.png"},
+			{name : "chapeau_pirate_noir_F.png"},
+			{name : "chapeau_pirate_roux_F.png"},
+
+
+
 		];
 
 		$scope.barbe = [

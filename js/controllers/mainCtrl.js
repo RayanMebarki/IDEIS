@@ -32,8 +32,8 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 		$scope.saveProposition = [];
 		$scope.tabMemory = [];
 		$scope.challenge = 0;
+		$scope.bgColor = "red";
 		
-
 
 		$scope.droppedObjects1 = [
 			{name: 'Motivation', id: 1},
@@ -73,19 +73,21 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 			this.nbClick ++;
 			if (this.nbClick % 2 == 0)
 			{
-				$(this).css("backgroundColor", "red"); // NOT WORKING
+				$(this).css("background-color", "red"); // NOT WORKING
 				var indexProposition = $scope.saveProposition.indexOf(this.realItem);
 				$scope.saveProposition.splice(indexProposition, 1);
 				console.log($scope.saveProposition);
 				$scope.score -= 10;
+				$scope.bgColor = "red";
 				varShared.setScore($scope.score);
 			} else
 			{
-				$(this).css("backgroundColor", "blue"); // NOT WORKING
+				$(this).css("background-color", "blue"); // NOT WORKING
 				var indexProposition = $scope.saveProposition.indexOf(this.realItem);
 				$scope.saveProposition.push(this.realItem);
 				console.log($scope.saveProposition);
 				$scope.score += 10;
+				$scope.bgColor = "blue";
 				varShared.setScore($scope.score);
 				if ($scope.score >= 10)
 				{
