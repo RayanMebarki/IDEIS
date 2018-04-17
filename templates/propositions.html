@@ -9,7 +9,7 @@
 		ng-repeat="proposition in droppedObjects1"
 		ng-drag="true" ng-drag-data="proposition"
 		ng-drag-success="onDragSuccess1($data, $event)">
-		<div class="button">{{proposition.name}}</div>
+		<div class="button"><img class="theme" src="{{proposition.url}}"></div>
 		</div>
 	</div>
 
@@ -48,9 +48,9 @@
 
 	<div id="memory" ng-if=memory>
 		<h1>Jeu du mémory !</h1>
-		<div id="{{card}}" class="button" ng-repeat="card in tabMemory track by $index" ng-click="checkMemory($index)">
+		<button id="{{card}}" class="button" ng-repeat="card in tabMemory track by $index" ng-click="checkMemory($index)">
 			<span ng-if="showCard == true || hideCard == false">{{card}}</span>
-		</div>
+		</button>
 	</div>
 	<div id="victory" ng-if=showVictory>
 		<h1>Les epreuves que tu as enduré t'ont permi de t'immisser au sommet</h1>

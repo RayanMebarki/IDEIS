@@ -36,24 +36,26 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 		
 
 		$scope.droppedObjects1 = [
-			{name: 'Motivation', id: 1},
-			{name: "Confiance", id: 2},
-			{name: "Évolution Professionnelle", id: 3},
-			{name: "Ce n'est pas l'ecole", id: 4},
-			{name: "Immersion en entreprise", id: 5},
-			{name: "Contenu de la formation", id: 6},
+			{name: 'Motivation', url: "media/themes/export_theme/motivation.png"},
+			{name: "Confiance", url: "media/themes/export_theme/confiance.png"},
+			{name: "Évolution Professionnelle", url: "media/themes/export_theme/promotion.png"},
+			{name: "Ce n'est pas l'ecole", url: "media/themes/export_theme/pas_ecole.png"},
+			{name: "Immersion en entreprise", url: "media/themes/export_theme/entreprise.png"},
+			{name: "Contenu de la formation", url: "media/themes/export_theme/diplome.png"},
 		];
 
 		$scope.init = function()
 		{
+			
 			$scope.droppedObjects1 = [
-				{name: 'Motivation', id: 1},
-				{name: "Confiance", id: 2},
-				{name: "Évolution Professionnelle", id: 3},
-				{name: "Ce n'est pas l'ecole", id: 4},
-				{name: "Immersion en entreprise", id: 5},
-				{name: "Contenu de la formation", id: 6},
+				{name: 'Motivation', url: "media/themes/export_theme/motivation.png"},
+				{name: "Confiance", url: "media/themes/export_theme/confiance.png"},
+				{name: "Évolution Professionnelle", url: "media/themes/export_theme/promotion.png"},
+				{name: "Ce n'est pas l'ecole", url: "media/themes/export_theme/pas_ecole.png"},
+				{name: "Immersion en entreprise", url: "media/themes/export_theme/entreprise.png"},
+				{name: "Contenu de la formation", url: "media/themes/export_theme/diplome.png"},
 			];
+
 			$scope.droppedObjects2 = [];
 			$scope.saveProposition = [];
 			$scope.newList = [];
@@ -64,7 +66,7 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 			$scope.dropIsOk = false;
 			$scope.nbPropositionIsOk = false;
 			$scope.droppedObjects2NotNullIsOk = false;
-
+			$scope.pygargue = false;
 			$scope.dropIsOk = true;
 		}
 
@@ -298,6 +300,20 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	    $scope.checkMemory = function(myIndex)
 	    {
 	    	nbClickMemory++;
+	    	this.nbClick ++;
+	    	if (this.nbClick >= 2)
+	    	{
+	    		$scope.scoreMemory = 0;
+	    		// console.log("Score :  " + $scope.scoreMemory);
+	    		nbClickMemory = 0;
+	    		// this.showCard = false;
+	    		// saveFirstCard = false;
+	    		$scope.tabMemory = [];
+	    		// sleep(2000);
+	    		$scope.showCard = false;
+	    		$scope.recommencer = true;
+	    		// console.log($scope.showCard);
+	    	}
 	    	if (nbClickMemory == 1)
 	    	{
 		    	this.showCard = true;
