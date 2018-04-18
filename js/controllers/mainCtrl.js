@@ -36,26 +36,26 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 		
 
 		$scope.droppedObjects1 = [
-			{name: 'Motivation', url: "media/themes/export_theme/motivation.png"},
-			{name: "Confiance", url: "media/themes/export_theme/confiance.png"},
-			{name: "Évolution Professionnelle", url: "media/themes/export_theme/promotion.png"},
-			{name: "Ce n'est pas l'ecole", url: "media/themes/export_theme/pas_ecole.png"},
-			{name: "Immersion en entreprise", url: "media/themes/export_theme/entreprise.png"},
-			{name: "Contenu de la formation", url: "media/themes/export_theme/diplome.png"},
+			{name: 'Motivation', url: "media/themes/export_theme/motivation.png", id: 1},
+			{name: "Confiance", url: "media/themes/export_theme/confiance.png", id: 2},
+			{name: "Évolution Professionnelle", url: "media/themes/export_theme/promotion.png", id: 3},
+			{name: "Ce n'est pas l'ecole", url: "media/themes/export_theme/pas_ecole.png", id: 4},
+			{name: "Immersion en entreprise", url: "media/themes/export_theme/entreprise.png", id: 5},
+			{name: "Contenu de la formation", url: "media/themes/export_theme/diplome.png", id: 6},
 		];
+
 
 		$scope.init = function()
 		{
-			
-			$scope.droppedObjects1 = [
-				{name: 'Motivation', url: "media/themes/export_theme/motivation.png"},
-				{name: "Confiance", url: "media/themes/export_theme/confiance.png"},
-				{name: "Évolution Professionnelle", url: "media/themes/export_theme/promotion.png"},
-				{name: "Ce n'est pas l'ecole", url: "media/themes/export_theme/pas_ecole.png"},
-				{name: "Immersion en entreprise", url: "media/themes/export_theme/entreprise.png"},
-				{name: "Contenu de la formation", url: "media/themes/export_theme/diplome.png"},
-			];
 
+			$scope.droppedObjects1 = [
+				{name: 'Motivation', url: "media/themes/export_theme/motivation.png", id: 1},
+				{name: "Confiance", url: "media/themes/export_theme/confiance.png", id: 2},
+				{name: "Évolution Professionnelle", url: "media/themes/export_theme/promotion.png", id: 3},
+				{name: "Ce n'est pas l'ecole", url: "media/themes/export_theme/pas_ecole.png", id: 4},
+				{name: "Immersion en entreprise", url: "media/themes/export_theme/entreprise.png", id: 5},
+				{name: "Contenu de la formation", url: "media/themes/export_theme/diplome.png", id: 6},
+			];
 			$scope.droppedObjects2 = [];
 			$scope.saveProposition = [];
 			$scope.newList = [];
@@ -66,34 +66,46 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 			$scope.dropIsOk = false;
 			$scope.nbPropositionIsOk = false;
 			$scope.droppedObjects2NotNullIsOk = false;
+
 			$scope.pygargue = false;
+
 			$scope.dropIsOk = true;
 		}
 
-		$scope.scoreIncrement = function()
+		$scope.scoreIncrement = function(id)
 		{
+			$scope.identifiant = 0;
+			if (id == 1)
+			{
+				$scope.identifiant = this.realItem;
+			} else if(id == 2)
+			{
+				$scope.identifiant = this.realItem2;
+			}
 			this.nbClick ++;
 			if (this.nbClick % 2 == 0)
 			{
-				$(this).css("background-color", "red"); // NOT WORKING
-				var indexProposition = $scope.saveProposition.indexOf(this.realItem);
+				var indexProposition = $scope.saveProposition.indexOf($scope.identifiant);
 				$scope.saveProposition.splice(indexProposition, 1);
 				console.log($scope.saveProposition);
-				$scope.score -= 10;
+				$scope.score -= (id * 10);
 				$scope.bgColor = "red";
 				varShared.setScore($scope.score);
 			} else
 			{
-				$(this).css("background-color", "blue"); // NOT WORKING
-				var indexProposition = $scope.saveProposition.indexOf(this.realItem);
-				$scope.saveProposition.push(this.realItem);
+				var indexProposition = $scope.saveProposition.indexOf($scope.identifiant);
+				$scope.saveProposition.push($scope.identifiant);
 				console.log($scope.saveProposition);
-				$scope.score += 10;
+				$scope.score += (id * 10);
 				$scope.bgColor = "blue";
 				varShared.setScore($scope.score);
-				if ($scope.score >= 10)
+				if ($scope.score >= 10 && id == 1)
 				{
 					$scope.nbPropositionIsOk = true;
+					$scope.dropIsOk = false;
+				}
+				else if($scope.score >= 10 && id == 2)
+				{
 					$scope.dropIsOk = false;
 				}
 			}
@@ -188,7 +200,11 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 
 		$scope.prepare2 = function()
 		{
+			$scope.pygargue = false;
 			$scope.ready2 = true;
+			$scope.nbPropositionIsOk = false;
+			$scope.nbPropositionIsOk2 = true;
+			$scope.showReponse2 = false;
 			$scope.showVictory = false;
 		}
 
@@ -234,9 +250,10 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	            }
 	        }
 
-	        $scope.insertProposition = function()
+	        $scope.insertProposition = function(id)
 	        {
 	        	$scope.ready = false;
+	        	$scope.nbPropositionIsOk = false;
 
 	        	$scope.saveProposition.forEach(function(element)
 	        	{
@@ -259,8 +276,18 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	        		// memoryGame();
 	        	} else
 	        	{
-	        		$scope.showReponse2 = true;
+	        		if (id != 2)
+	        		{
+	        			$scope.showReponse2 = true;
+	        		}
+	        		else
+	        		{
+	        			window.location.href = "#!/questionIDEIS";
+	        		}
+	        		
 	        	}
+
+	        	$scope.saveProposition = [];
 	        }
 
 	    $scope.showCard = false;
@@ -387,8 +414,61 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 
 	    $scope.cliqueDeLinfini = function()
 	    {
+	    	
+	    	$scope.eggList = [
+	    		"oeuf1.png",
+	    		"oeuf2.png",
+	    		"oeuf3.png",
+	    		"oeuf4.png",
+	    		"oeuf5.png",
+	    		"oeuf6.png",
+	    		"oeuf7.png",
+	    		"oeuf8.png"
+	    	];
+
 	    	$scope.egg = true;
 	    	nbClickInfini ++;
+	    	
+	    	switch (nbClickInfini)
+	    	{
+	    		case 0:
+	    		$scope.srcOeuf = $scope.eggList[0];
+	    		break;
+
+	    		case 1:
+	    		$scope.srcOeuf = $scope.eggList[0];
+	    		break;
+
+	    		case 2:
+	    		$scope.srcOeuf = $scope.eggList[1];
+	    		break;
+
+	    		case 4:
+	    		$scope.srcOeuf = $scope.eggList[2];
+	    		break;
+
+	    		case 6:
+	    		$scope.srcOeuf = $scope.eggList[3];
+	    		break;
+
+	    		case 8:
+	    		$scope.srcOeuf = $scope.eggList[4];
+	    		break;
+
+	    		case 11:
+	    		$scope.srcOeuf = $scope.eggList[5];
+	    		break;
+
+	    		case 13:
+	    		$scope.srcOeuf = $scope.eggList[6];
+	    		break;
+
+	    		case 16:
+	    		$scope.srcOeuf = $scope.eggList[7];
+	    		break;
+
+	    	}
+
 	    	if (nbClickInfini == 4 || nbClickInfini == 13)
 	    	{
 	    		retry.play();
@@ -415,6 +495,10 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/Hrja93QLYR8?start=66&autoplay=1");
 	    		break;
 	    	}
+	    	$scope.score = 120;
+	    	varShared.setScore($scope.score);
+	    	$scope.showReponse2 = true;
+	    	$scope.nbPropositionIsOk = false;
 	    	$scope.easterEgg = false;
 	    	$scope.pygargue = true;
 	    }

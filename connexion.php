@@ -1,7 +1,8 @@
 <?php 
 $data = json_decode(file_get_contents("php://input"));
 
-$tryEmail = $data->monEmail;
+
+$tryEmail = htmlspecialchars($data->monEmail);
 
 
 try {

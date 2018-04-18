@@ -23,6 +23,11 @@ app.config(function($routeProvider)
 		templateUrl : 'templates/monProfil.html',
 		controller : 'profilCtrl'
 	})
+	.when('/questionIDEIS',
+	{
+		templateUrl : "templates/questionIDEIS.html",
+		controller : 'questionIdeisCtrl'
+	})
 	.when('/disconnect',
 	{
 		templateUrl : "templates/disconnect.html",
@@ -30,7 +35,7 @@ app.config(function($routeProvider)
 	})
 	.otherwise(
 	{
-		templateUrl : "templates/accueil.html",
-		controller : "accueilCtrl"
+		templateUrl : "templates/disconnect.html",
+		controller : "disconnectCtrl"
 	});
 });

@@ -9,7 +9,7 @@
 		ng-repeat="proposition in droppedObjects1"
 		ng-drag="true" ng-drag-data="proposition"
 		ng-drag-success="onDragSuccess1($data, $event)">
-		<div class="button"><img class="theme" src="{{proposition.url}}"></div>
+		<div class="button"><img class="theme" src="{{proposition.url}}" alt="{{proposition.url}}"></div>
 		</div>
 	</div>
 
@@ -29,7 +29,7 @@
 	<div class="listOfProposition" ng-if=ready class="nouvelleListe">
 		<div id="align">
 			<div ng-repeat="item in newList" id="$index">
-				<div ng-init='bgColor = "red"' style="background-color: {{bgColor}}" id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement()">
+				<div ng-init='bgColor = "red"' style="background-color: {{bgColor}}" id="{{$index + index}}" class="button" ng-repeat="realItem in item" ng-click="scoreIncrement(1)">
 					{{realItem}}
 				</div>
 			</div>				
@@ -40,7 +40,7 @@
 	<div class="listOfProposition" ng-if=ready2 class="nouvelleListe">
 		<h1 class="titre">Voici les thématiques que tu n'as pas retenus</h1>
 		<div ng-repeat="item2 in newList2" id="$index">
-			<div id="{{$index + index}}" class="button" ng-repeat="realItem2 in item2" ng-click="scoreIncrement()">
+			<div id="{{$index + index}}" class="button" ng-repeat="realItem2 in item2" ng-click="scoreIncrement(2)">
 				{{realItem2}}
 			</div>
 		</div>
@@ -63,7 +63,7 @@
 		<button ng-click="memoryGame()">J'accepte</button> <button>Je refuse</button>
 	</div>
 
-	<img src="media/img/oeuf.png" ng-if="egg" ng-click="cliqueDeLinfini()">
+	<img src="media/img/oeufs/{{srcOeuf}}" ng-if="egg" ng-click="cliqueDeLinfini()">
 
 	<div ng-if="easterEgg">
 		<h1>CLique sur l'aigle</h1>
@@ -72,12 +72,15 @@
 		<img class="jdg" src="media/img/nkm.jpg" ng-if="easterEgg" ng-click="displayVideo(3)">
 	</div>
 
-
 	<iframe ng-if="pygargue" width="560" height="315" src="{{codeVideo}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen autoplay="1"></iframe>
 	<button ng-click="init()" ng-if=droppedObjects2NotNullIsOk class="init">REINITIALISER</button>
 	<button ng-click="displayCells()" ng-if="dropIsOk" class="init">GO</button>
-	<button ng-if=nbPropositionIsOk ng-click="insertProposition()" class="init">Valider mes propositions</button>
-	<button ng-if=recommencer ng-click="yesYouCan()" class="init">Recommencer</button>
+	<button ng-if=nbPropositionIsOk ng-click="insertProposition(1)" class="init">Valider mes propositions</button>
+	<button ng-if=nbPropositionIsOk2 ng-click="insertProposition(2)" class="init">Valider mes propositions</button>
+	<div ng-if=recommencer>
+		<img src="media/img/cry.gif" alt="CRY">
+		<button  ng-click="yesYouCan()" class="init">Recommencer</button>	
+	</div>
 	<button ng-if=showReponse2 ng-click="prepare2()" class="init">Afficher les autres réponses</button>
 
 </div>

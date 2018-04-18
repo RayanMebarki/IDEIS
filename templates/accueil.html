@@ -22,9 +22,9 @@
 	<fieldset>
 		<legend>Connexion</legend>
 		<form>
-			Email : <input type="email" name="email" ng-model="emailConnect">
+			Email : <input type="email" name="email" ng-model="emailConnect" required>
 			<br>
-			Mot de passe : <input type="password" name="password" ng-model="passwordConnect">
+			Mot de passe : <input type="password" name="password" ng-model="passwordConnect" required>
 			<br>
 			<button ng-click="connexion()">Se connecter</button>
 		</form>

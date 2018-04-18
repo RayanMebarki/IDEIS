@@ -46,33 +46,38 @@ app.controller('accueilCtrl', function($scope, $http)
 	{
 		var infoEmail = "";
 		var infoPasswd = "";
+		if (typeof this.emailConnect != "undefined" && typeof this.passwordConnect != "undefined")
+		{
+			var inputEmail = this.emailConnect;
+			var inputPassword = this.passwordConnect;
+			$scope.infos = null;
 
-		var inputEmail = this.emailConnect;
-		var inputPassword = this.passwordConnect;
-		$scope.infos = null;
+			$http.post('connexion.php',
+			{
+				'monEmail' : this.emailConnect
+			})
+			.then(function(response)
+			{
+				infoEmail = response.data.EMAIL;
+				infoPasswd = response.data.PASSWORD;
+				if (inputEmail == infoEmail && inputPassword == infoPasswd)
+				{
+					sessionStorage.setItem("id", response.data.ID_PERSONNE);
+					sessionStorage.setItem('nom', response.data.NOM_PERSONNE);
+					sessionStorage.setItem('prenom', response.data.PRENOM_PERSONNE);
+					window.location.href = "#!/avatar";
+				} else
+				{
+					console.error('Erreur login et/ou mot de passe');
+				}
+			}, function(response)
+			{
+				console.error("Erreur ! " + response);
+			});
+		} else {
+			console.error('Erreur saisie');
+		}
 
-		$http.post('connexion.php',
-		{
-			'monEmail' : this.emailConnect
-		})
-		.then(function(response)
-		{
-			infoEmail = response.data.EMAIL;
-			infoPasswd = response.data.PASSWORD;
-			if (inputEmail == infoEmail && inputPassword == infoPasswd)
-			{
-				sessionStorage.setItem("id", response.data.ID_PERSONNE);
-				sessionStorage.setItem('nom', response.data.NOM_PERSONNE);
-				sessionStorage.setItem('prenom', response.data.PRENOM_PERSONNE);
-				window.location.href = "#!/avatar";
-			} else
-			{
-				console.error('Erreur login et/ou mot de passe');
-			}
-		}, function(response)
-		{
-			console.error("Erreur ! " + response);
-		});
 	}
 
 });
