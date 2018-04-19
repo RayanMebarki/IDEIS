@@ -15,30 +15,36 @@ app.controller('accueilCtrl', function($scope, $http)
 
 	$scope.inscription = function()
 	{
-		if (this.password == this.password2)
+		if (typeof this.nom != "undefined" && typeof this.prenom != "undefined" && typeof this.email != "undefined" && typeof this.password != "undefined" && typeof this.password2 != "undefined")
 		{
-			console.log(this.email);
-			console.log(this.password);
-			console.log(this.password2);
+			if (this.password == this.password2)
+			{
+				console.log(this.email);
+				console.log(this.password);
+				console.log(this.password2);
 
-    		$http.post('register.php',
-    		{
-    			'email' : this.email,
-    			'password' : this.password,
-    			'nom' : this.nom,
-    			'prenom' : this.prenom
-    		})
-    		.then(function(response)
-    		{
-    			alert('Inscription réussie');
-    		}, function(response)
-    		{
-    			console.error("Erreur ! " + response);
-    		});
-		} else
-		{
-			alert("Les mots de passe ne sont pas les mêmes");
+	    		$http.post('register.php',
+	    		{
+	    			'email' : this.email,
+	    			'password' : this.password,
+	    			'nom' : this.nom,
+	    			'prenom' : this.prenom
+	    		})
+	    		.then(function(response)
+	    		{
+	    			alert('Inscription réussie');
+	    		}, function(response)
+	    		{
+	    			console.error("Erreur ! " + response);
+	    		});
+			} else
+			{
+				alert("Les mots de passe ne sont pas les mêmes");
+			}
+		} else {
+			console.error("erreur saisie");
 		}
+
 	}
 
 

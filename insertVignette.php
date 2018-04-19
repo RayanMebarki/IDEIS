@@ -1,8 +1,6 @@
 <?php 
 $data = json_decode(file_get_contents("php://input"));
 
-$content = $data->content;
-$id = $data->idPersonne;
 
 
 try {
@@ -14,9 +12,9 @@ catch(PDOException $e)
     	echo "Connection failed: " . $e->getMessage();
     }
 
-    $query = $pdo->prepare('INSERT INTO `proposition`(`ID_PERSONNE`,`LIB_PROPOSITION`) VALUES (?, ?)');
-    $query->bindValue(1, $id);
-    $query->bindValue(2, $content);
+    $query = $pdo->prepare('INSERT INTO `vignette`(`ID_PERSONNE`,`LIB_VIGNETTE`) VALUES (?, ?)');
+    $query->bindValue(1, $data->idPersonne);
+    $query->bindValue(2, $data->vignette);
     $query->execute();
 
 

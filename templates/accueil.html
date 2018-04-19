@@ -5,15 +5,15 @@
 	<fieldset>
 		<legend>Inscription</legend>
 		<form>
-			Nom : <input type="nom" name="nom" ng-model="nom">
+			Nom : <input type="nom" name="nom" ng-model="nom" required>
 			<br>
-			Prenom : <input type="prenom" name="prenom" ng-model="prenom">
+			Prenom : <input type="prenom" name="prenom" ng-model="prenom" required>
 			<br>
-			Email : <input type="email" name="email" ng-model="email">
+			Email : <input type="email" name="email" ng-model="email" required>
 			<br>
-			Mot de passe : <input type="password" name="password" ng-model="password">
+			Mot de passe : <input type="password" name="password" ng-model="password" required>
 			<br>
-			Retaper le mot de passe : <input type="password" name="password2" ng-model="password2">
+			Retaper le mot de passe : <input type="password" name="password2" ng-model="password2" required>
 			<br>
 			<button ng-click="inscription()">S'inscrire</button>
 		</form>

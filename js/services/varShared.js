@@ -24,6 +24,41 @@ app.service("varShared", function($http)
 		{
 			console.error(error);
 		});
+
+		switch(score)
+		{
+			case 10:
+			insertVignette("media/vignettes/1st_step.png");
+			break;
+
+			case 50:
+			insertVignette("media/vignettes/diplome.png");
+			break;
+
+			case 120:
+			insertVignette("media/vignettes/travail.png");
+			insertVignette("media/vignettes/argent.png");
+			break;
+
+			case 150:
+			insertVignette("media/vignettes/voiture.png");
+			break;
+		}
+
+		function insertVignette(idVignette)
+		{
+			$http.post( "insertVignette.php",
+			{
+				idPersonne : sessionStorage.getItem('id'),
+				vignette : idVignette
+			})
+			.then(
+				function(response)
+				{
+					console.log("Insertion vignette OK");
+				}
+			);
+		}
 	}
 
 

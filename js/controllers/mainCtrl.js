@@ -45,6 +45,8 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 		];
 
 
+
+
 		$scope.init = function()
 		{
 
