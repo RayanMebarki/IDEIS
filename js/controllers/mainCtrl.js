@@ -18,8 +18,6 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 
 
 	    var retry = new Audio('media/sounds/yesYouCan.mp3');
-	    var victory = new Audio('media/sounds/VictoryLOL.mp3');
-	    var foule = new Audio('media/sounds/foule.mp3');
 	    var nbClickInfini = 0;
 		$scope.ready = false;
 		$scope.j = 0; // compteur de sous-catégorie
@@ -207,7 +205,6 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 			$scope.nbPropositionIsOk = false;
 			$scope.nbPropositionIsOk2 = true;
 			$scope.showReponse2 = false;
-			$scope.showVictory = false;
 		}
 
 		$scope.droppedObjects2 = [];
@@ -284,7 +281,47 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	        		}
 	        		else
 	        		{
-	        			window.location.href = "#!/questionIDEIS";
+	        			// INSERTION VIGNETTE ICI (TEST)
+						if ($scope.score >= 10 && $scope.score < 50)
+						{
+							insertVignette("media/vignettes/1st_step.png");
+						}
+						else if ($scope.score >= 50 && $scope.score < 120)
+						{
+							insertVignette("media/vignettes/1st_step.png");
+							insertVignette("media/vignettes/diplome.png");
+						}
+						else if ($scope.score >= 120 && $scope.score < 150)
+						{
+							insertVignette("media/vignettes/1st_step.png");
+							insertVignette("media/vignettes/diplome.png");
+							insertVignette("media/vignettes/travail.png");
+							insertVignette("media/vignettes/argent.png");			
+						}
+						else if ($scope.score >= 150)
+						{
+							insertVignette("media/vignettes/1st_step.png");
+							insertVignette("media/vignettes/diplome.png");
+							insertVignette("media/vignettes/travail.png");
+							insertVignette("media/vignettes/argent.png");
+							insertVignette("media/vignettes/voiture.png");	
+						}
+
+						function insertVignette(idVignette)
+						{
+							$http.post( "insertVignette.php",
+							{
+								idPersonne : sessionStorage.getItem('id'),
+								vignette : idVignette
+							})
+							.then(
+								function(response)
+								{
+									console.log("Insertion vignette OK");
+								}
+							);
+						}
+	        			window.location.href = "#!/bienJoue";
 	        		}
 	        		
 	        	}
@@ -365,10 +402,7 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 		    		// console.log("Score :  " + $scope.scoreMemory);
 		    		if ($scope.scoreMemory >= 3)
 		    		{
-		    			$scope.showVictory = false;
 		    			$scope.tabMemory = [];
-						// victory.play();
-						// foule.play();
 						varShared.setScore($scope.score);
 						$scope.challenge = 2;
 						checkChallenge();

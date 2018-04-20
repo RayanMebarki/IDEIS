@@ -1,5 +1,15 @@
 <div class="container">
 	<div ng-if="question1">
-		<h1>Question 1</h1> 
+		<h1>Bravo ! tu as obtenu {{scoreBilan}} points</h1> 
+	</div>
+	<div id="victory">
+		<h1>Les epreuves que tu as enduré t'ont permi de t'immisser au sommet</h1>
+		<img src="media/img/shia.gif" alt="Victoire !"/>
+	</div>
+	<div>
+		<h2>Voici les vignettes que tu as collecté</h2>
+		<div id="listeImage">
+			<img ng-repeat="image in listImage" src="{{image.LIB_VIGNETTE}}">
+		</div>
 	</div>
 </div>

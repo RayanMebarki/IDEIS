@@ -16,7 +16,14 @@ app.controller('avatarCtrl', function($scope, $http, varShared)
 {
 	if (sessionStorage.getItem('id') != null)
 	{
-		$scope.message = "Hello " + sessionStorage.getItem('prenom') + " ! Tu as " + varShared.getScore() + " point(s)";
+		$scope.scoreActuel = null;
+		varShared.getScore()
+		.then(function(score)
+		{
+			$scope.scoreActuel = score;
+			//$scope.message = "Hello " + sessionStorage.getItem('prenom') + " ! Tu as " + scoreActuel + " point(s)";
+		});
+		
 
 
 		$scope.corps = [
