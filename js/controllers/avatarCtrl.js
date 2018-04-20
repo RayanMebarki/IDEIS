@@ -431,9 +431,10 @@ app.controller('avatarCtrl', function($scope, $http, varShared)
 				.then(function(response)
 				{
 					console.log('insert Done  : ' + partieDuCorps);
+
 				});
 			});
-
+			window.location.href = "#!/questionnaire";
 		}
 	} else
 	{

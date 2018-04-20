@@ -23,10 +23,10 @@ app.config(function($routeProvider)
 		templateUrl : 'templates/monProfil.html',
 		controller : 'profilCtrl'
 	})
-	.when('/questionIDEIS',
+	.when('/bienJoue',
 	{
-		templateUrl : "templates/questionIDEIS.html",
-		controller : 'questionIdeisCtrl'
+		templateUrl : "templates/bienJoue.html",
+		controller : 'bienjoueCtrl'
 	})
 	.when('/disconnect',
 	{

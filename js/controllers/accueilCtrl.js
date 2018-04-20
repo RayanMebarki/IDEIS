@@ -32,7 +32,8 @@ app.controller('accueilCtrl', function($scope, $http)
 	    		})
 	    		.then(function(response)
 	    		{
-	    			alert('Inscription réussie');
+	    			console.log('Inscription réussie');
+	    			location.reload();
 	    		}, function(response)
 	    		{
 	    			console.error("Erreur ! " + response);
