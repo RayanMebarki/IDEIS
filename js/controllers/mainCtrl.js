@@ -14,6 +14,7 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 {
 	if (sessionStorage.getItem('id') != null)
 	{
+		var nsm = new Audio("media/sounds/nsm.mp3");
 		$scope.prenom = sessionStorage.getItem("prenom");
 
 
@@ -505,9 +506,9 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 
 	    	}
 
-	    	if (nbClickInfini == 4 || nbClickInfini == 13)
+	    	if (nbClickInfini == 3)
 	    	{
-	    		retry.play();
+	    		nsm.play();
 	    	}
 	    	if (nbClickInfini == 20)
 	    	{
