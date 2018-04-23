@@ -32,7 +32,7 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 		$scope.tabMemory = [];
 		$scope.challenge = 0;
 		$scope.bgColor = "red";
-		
+
 
 		$scope.droppedObjects1 = [
 			{name: 'Motivation', url: "media/themes/export_theme/motivation.png", id: 1},
@@ -521,15 +521,24 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	    	switch(idVideo)
 	    	{
 	    		case 1:
-	    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/ffRUntstOdw?autoplay=1");
+	    		this.easterEgg = false;
+	    		$scope.easterEgg1 = true;
+	    		$scope.buttonInterro = true;
+	    		//$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/ffRUntstOdw?autoplay=1");
 	    		break;
 
 	    		case 2:
-	    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/l1zLNzVC_vw?autoplay=1");
+	    		this.easterEgg = false;
+	    		$scope.easterEgg2 = true;
+	    		$scope.buttonInterro = true;
+	    		//$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/l1zLNzVC_vw?autoplay=1");
 	    		break;
 
 	    		case 3:
-	    		$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/Hrja93QLYR8?start=66&autoplay=1");
+	    		this.easterEgg = false;
+	    		$scope.easterEgg3 = true;
+	    		$scope.buttonInterro = true;
+	    		//$scope.codeVideo = $sce.trustAsResourceUrl("https://www.youtube.com/embed/Hrja93QLYR8?start=66&autoplay=1");
 	    		break;
 	    	}
 	    	$scope.score = 120;
@@ -537,7 +546,16 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 	    	$scope.showReponse2 = true;
 	    	$scope.nbPropositionIsOk = false;
 	    	$scope.easterEgg = false;
-	    	$scope.pygargue = true;
+	    	//$scope.pygargue = true;
+	    }
+
+	    $scope.initInterro = function()
+	    {
+	    	$scope.buttonInterro = false;
+	    	$scope.easterEgg1 = false;
+	    	$scope.easterEgg2 = false;
+	    	$scope.easterEgg3 = false;
+	    	$scope.easterEgg = true;
 	    }
 
 	    $http.get("json.php")
