@@ -1,10 +1,53 @@
-img.corpsAvatar
+	img.corpsAvatar
 {
-	width: 200px;
+	width: 300px;
 }
-
-img.fleche
-{
-	width: 50px;
+.avatar{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
-
+.corps{
+	text-align: center;
+}
+.cheveux{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 9%;
+    left: 0%;
+    
+}
+.hair{
+	
+	width: 150px;
+    height: 100%;
+    z-index: 99;
+}
+.tshirt{
+	display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 26%;
+    left: -2px;
+}
+.shirt{
+	width: 194px;
+    height: 1%;
+}
+.barbe{
+	display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    width: 100%;
+    top: 17%;
+    left: -2px;
+    height: 9%;
+    z-index: 80;
+}
+.barbeimg{
+	width: 90px;
+    height: 100%;
+    }

@@ -67,3 +67,12 @@ img.corpsAvatar
 {
 	width: 70px;
 }
+html{
+	width: 100%;
+    height: 100vh
+}
+body{
+	background-image: linear-gradient(to bottom, #f59c00, #f8a600, #faaf00, #fcb900, #fdc300);
+	background-repeat: no-repeat;
+	color: white;
+}

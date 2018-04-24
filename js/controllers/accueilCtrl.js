@@ -1,4 +1,4 @@
-/**
+	/**
 
 .______          ___   ____    ____  ___      .__   __.    .___  ___.  _______ .______        ___      .______       __  ___  __  
 |   _  \        /   \  \   \  /   / /   \     |  \ |  |    |   \/   | |   ____||   _  \      /   \     |   _  \     |  |/  / |  | 
@@ -11,7 +11,7 @@
 
 app.controller('accueilCtrl', function($scope, $http)
 {
-	$scope.message = "Hello World";
+	$scope.message = "Bienvenue chez Ideis !";
 
 	$scope.inscription = function()
 	{

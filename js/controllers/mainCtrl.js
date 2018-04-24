@@ -201,6 +201,7 @@ app.controller("mainCtrl", function($scope, $http, $sce, varShared)
 
 		$scope.prepare2 = function()
 		{
+			$scope.buttonInterro = false;
 			$scope.pygargue = false;
 			$scope.ready2 = true;
 			$scope.nbPropositionIsOk = false;

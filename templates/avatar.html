@@ -1,35 +1,35 @@
 <link rel="stylesheet" type="text/css" href="css/avatar.css">
 <div class="container">
-	<h1>{{scoreActuel}}</h1>
+	<h1>{{message}}</h1>
 
 	<div class="avatar">
 
 		<div class="corps">
-			<img class="fleche" src="media/img/flecheGauche.jpg" ng-click="switch(0, 0)">
-			<img class="fleche" src="media/img/flecheDroite.jpg" ng-click="switch(1, 0)">
-			<img class="corpsAvatar" src="media/avatar/export_avatar/{{corps[positionCorps].name}}" alt="corps">			
+			<i class="fas fa-angle-left" style="color: white" ng-click="switch(0, 0)"></i> 
+			<img class="corpsAvatar" src="media/avatar/export_avatar/{{corps[positionCorps].name}}" alt="corps">
+			<i class="fas fa-angle-right" style="color: white" ng-click="switch(1, 0)"></i> 			
 		</div>
 
 		<div class="cheveux">
-			<img class="fleche" src="media/img/flecheGauche.jpg" ng-click="switch(0, 1)">
-			<img class="fleche" src="media/img/flecheDroite.jpg" ng-click="switch(1, 1)">
-			<img class="hair" src="media/avatar/export_avatar/cheveux/{{cheveux[positionCheveux].name}}">			
+			<i class="fas fa-angle-left" style="color: white" ng-click="switch(0, 1)"></i>
+			<img class="hair" src="media/avatar/export_avatar/cheveux/{{cheveux[positionCheveux].name}}">
+			<i class="fas fa-angle-right" style="color: white" ng-click="switch(1, 1)"></i>			
 		</div>
 
 		<div class="tshirt">
-			<img class="fleche" src="media/img/flecheGauche.jpg" ng-click="switch(0, 2)">
-			<img class="fleche" src="media/img/flecheDroite.jpg" ng-click="switch(1, 2)">
-			<img src="media/avatar/export_avatar/tshirt/{{tshirt[positionTshirt].name}}">			
+			<i class="fas fa-angle-left" style="color: white" ng-click="switch(0, 2)"></i>
+			<img class="shirt" src="media/avatar/export_avatar/tshirt/{{tshirt[positionTshirt].name}}">
+			<i class="fas fa-angle-right" style="color: white" ng-click="switch(1, 2)"></i>		
 		</div>
 
 
 		<div class="barbe">
-			<img class="fleche" src="media/img/flecheGauche.jpg" ng-click="switch(0, 3)">
-			<img class="fleche" src="media/img/flecheDroite.jpg" ng-click="switch(1, 3)">
-			<img src="media/avatar/export_avatar/barbes/{{barbe[positionbarbe].name}}">			
+			<i class="fas fa-angle-left" style="color: white" ng-click="switch(0, 3)"></i>
+			<img class="barbeimg" src="media/avatar/export_avatar/barbes/{{barbe[positionbarbe].name}}">	
+			<i class="fas fa-angle-right" style="color: white" ng-click="switch(1, 3)"></i>	
 		</div>
 
-		<button ng-click="submitAvatar()">Valider L'avatar</button>
+		<button ng-click="submitAvatar()">Valider l'avatar</button>
 
 	</div>
 

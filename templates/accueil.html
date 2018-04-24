@@ -1,33 +1,53 @@
+<link rel="stylesheet" type="text/css" href="css/accueil.css">
+
+
 <div class="container">
-	<h1>{{message}}</h1>
-
-
-	<fieldset>
-		<legend>Inscription</legend>
-		<form>
-			Nom : <input type="nom" name="nom" ng-model="nom" required>
-			<br>
-			Prenom : <input type="prenom" name="prenom" ng-model="prenom" required>
-			<br>
-			Email : <input type="email" name="email" ng-model="email" required>
-			<br>
-			Mot de passe : <input type="password" name="password" ng-model="password" required>
-			<br>
-			Retaper le mot de passe : <input type="password" name="password2" ng-model="password2" required>
-			<br>
-			<button ng-click="inscription()">S'inscrire</button>
-		</form>
-	</fieldset>
-
-	<fieldset>
-		<legend>Connexion</legend>
-		<form>
-			Email : <input type="email" name="email" ng-model="emailConnect" required>
-			<br>
-			Mot de passe : <input type="password" name="password" ng-model="passwordConnect" required>
-			<br>
-			<button ng-click="connexion()">Se connecter</button>
-		</form>
-	</fieldset>
-
+	<div class="intro">
+		<h1>{{message}}</h1>
+		<hr/>
+	</div>
+	<div class="conteneur">
+		
+		<fieldset>	
+			<form>
+				<h2>Se connecter</h2>
+				<div>
+					<i class="far fa-envelope" style="color: white"></i> <input type="email" name="email" ng-model="emailConnect" required>
+				</div>
+				<br>
+				<div>
+					<i class="fas fa-unlock-alt" style="color: white"></i> <input type="password" name="password" ng-model="passwordConnect" required>
+				</div>
+				<br>
+				<button ng-click="connexion()">Se connecter</button>
+			</form>
+		</fieldset>
+		<fieldset>
+			<form>
+				<h2>Inscription</h2>
+				<div>
+					<i class="far fa-user" style="color: white"></i> <input type="nom" name="nom" ng-model="nom">
+				</div>
+				<br>
+				<div>
+					<i class="far fa-user" style="color: white"></i> <input type="prenom" name="prenom" ng-model="prenom">
+				</div>
+				<br>
+				<div>
+					<i class="far fa-envelope" style="color: white"></i> <input type="email" name="email" ng-model="email">
+				</div>
+				<br>
+				<div>
+					<i class="fas fa-unlock-alt" style="color: white"></i> <input type="password" name="password" ng-model="password">
+				</div>
+				<br>
+				<div>
+					<i class="fas fa-unlock-alt" style="color: white"></i> <input type="password" name="password2" ng-model="password2">
+				</div>
+				<br>
+				<button ng-click="inscription()">S'inscrire</button>
+			</form>
+		</fieldset>
+	</div>
+	<div class="logo"></div>
 </div>
